@@ -29,7 +29,11 @@ h4{
  position: relative;
  margin-top: 30px;
 }
-
+.home-nav{
+ padding:20px;
+ min-height: 80px;
+ border-bottom: solid 1px #eee;
+}
 .hr-text {
  line-height: 1em;
  position: relative;

@@ -2,11 +2,11 @@
   <div>
     <div class="home-nav">
       <a href="/">
-        <div v-if="navtype !== 'Trans'" style="height:60px; width:100px; float:left;">
-          <img src="../images/logo.png" class="app-nav-logo">
+        <div v-if="navtype !== 'Trans'" style="float:left; margin-top:-30px;">
+          <img src="../images/logo-grey.png" class="app-nav-logo">
         </div>
-        <div v-else style="height:60px; width:100px; float:left;">
-          <img src="../images/logo.png" class="app-nav-logo">
+        <div v-else style="float:left; margin-top:-30px;">
+          <img src="../images/logo-grey.png" class="app-nav-logo">
         </div>
       </a>
       <!-- <input type="checkbox" id="drawer-toggle" name="drawer-toggle" class="menu-nv-hd" />
@@ -93,27 +93,6 @@
             </Button>
           </a>
         </span>
-        <span style="float:right; margin-top:10px;">
-          <!-- <a @click="help = true" class="nv-lk">Help</a> -->
-          <a @click="hwta = true" class="nv-lk">How it works</a>
-          <a href="/sign-up-to-work" class="nv-lk">Sign up to work</a>
-          <Dropdown
-            placement="bottom-start"
-            style="margin-top:-5px; margin-left:20px; margin-right:20px;"
-          >
-            <Button>
-              <Icon type="navicon"/>
-            </Button>
-            <DropdownMenu slot="list">
-              <a href="https://blog.sturta.com" target="_blank">
-                <DropdownItem>Blog</DropdownItem>
-              </a>
-              <router-link to="#suppot-help" v-on:click.native="help = true">
-                <DropdownItem>Help and Support</DropdownItem>
-              </router-link>
-            </DropdownMenu>
-          </Dropdown>
-        </span>
       </div>
       <span
         class="m-hide"
@@ -128,31 +107,6 @@
             <Icon type="ios-arrow-thin-right"></Icon>
           </Button>
         </a>
-      </span>
-      <span
-        class="m-hide"
-        style="float:right; margin-top:10px;"
-        v-if="authtype === false && navtype === 'Auth'"
-      >
-        <!-- <a @click="help = true" class="nv-lk">Help</a> -->
-        <a @click="hwta = true" class="nv-lk">How it works</a>
-        <a href="/sign-up-to-work" class="nv-lk">Sign up to work</a>
-        <Dropdown
-          placement="bottom-start"
-          style="margin-top:-5px; margin-left:20px; margin-right:20px;"
-        >
-          <Button>
-            <Icon type="navicon"/>
-          </Button>
-          <DropdownMenu slot="list">
-            <a href="https://blog.sturta.com" target="_blank">
-              <DropdownItem>Blog</DropdownItem>
-            </a>
-            <router-link to="#suppot-help" v-on:click.native="help = true">
-              <DropdownItem>Help and Support</DropdownItem>
-            </router-link>
-          </DropdownMenu>
-        </Dropdown>
       </span>
     </div>
   </div>
@@ -197,29 +151,12 @@ export default {
   },
   created() {
     var self = this;
-    if (!this.$session.has("yay")) {
-      self.$confetti.start();
-      setTimeout(function() {
-        self.$confetti.stop();
-        self.$session.set("yay", "yayLaunched");
-      }, 1400);
-    }
     if (self.$session.has("usrid")) {
       self.curUser = this.$session.get("usrid");
       self.authtype = true;
     }
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-  destroyed() {
-    // window.removeEventListener("resize", this.handleResize);
   },
   methods: {
-    handleResize() {
-      if (window.innerWidth < 1080) {
-        window.location = "/mobile";
-      }
-    },
     logout: function() {
       this.$session.destroy();
       this.$router.push("/");

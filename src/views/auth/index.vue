@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <sturtaNav v-bind:authtype="authActive" v-bind:navtype="navtype"/> -->
+    <appNav v-bind:authtype="authActive" v-bind:navtype="navtype"/>
     <Row class="body-pad" type="flex" align="middle" justify="center">
       <svg
         class="coconut-left"
@@ -654,9 +654,8 @@
             v-if="!showUp"
           >
             <h1>Sign In</h1>
-            <br>
             <h3>
-              <span style="color:#000;">Please enter your phone number and password to log in</span>
+              <span style="color:#000;">Please enter your email &amp; password to log in</span>
             </h3>
             <br>
             <FormItem label="Email" prop="email" style="margin-top:10px;">
@@ -672,6 +671,8 @@
             <FormItem>
               <Button type="primary" size="large" @click="logSubmit('logValidate')" long>Log In</Button>
             </FormItem>
+            <hr class="hr-text" data-content="OR">
+            <social></social>
           </Form>
         </transition>
       </Col>
@@ -683,13 +684,15 @@ import Vue from "vue";
 import VueSession from "vue-session";
 import VueResource from "vue-resource";
 import config from "../../config";
+import appNav from "../../components/appNav";
 import social from "../../components/social";
 Vue.use(VueSession);
 Vue.use(VueResource);
 export default {
   name: "Authentication",
   components: {
-    social
+    social,
+    appNav
   },
   data() {
     const EmailPhone = (rule, value, callback) => {
@@ -801,6 +804,7 @@ export default {
     }
   },
   created() {
+    this.defLoad();
     this.$Message.config({
       top: 80,
       duration: 10
@@ -875,6 +879,16 @@ export default {
           );
         }
       });
+    },
+    defLoad() {
+      let d = new Date();
+      this.curYear = d.getFullYear();
+      this.$route.query.signUp === "true"
+        ? (this.showUp = true)
+        : (this.showUp = false);
+      this.$route.query.signUp === "true"
+        ? (document.title = "Sturta - Create Account")
+        : (document.title = "Sturta - Sign In");
     }
   }
 };

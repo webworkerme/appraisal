@@ -17,7 +17,7 @@
                 <a href="#">Header Option 2</a>
               </li>
               <li>
-                <a href="/authenticate">Log In</a>
+                <a href="/authenticate">Log In / Sign Up</a>
               </li>
             </ul>
           </nav>
