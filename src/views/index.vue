@@ -8,7 +8,7 @@
           <a href="/" class="navbar__logo">
             <img src="/src/images/logo.png" class="app-nav-logo">
           </a>
-          <nav class="navbar__menu">
+          <nav class="navbar__menu" style="padding-right:40px;">
             <ul>
               <li>
                 <a href="#">Header Option 1</a>

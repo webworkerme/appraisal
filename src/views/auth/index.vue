@@ -2,6 +2,94 @@
   <div>
     <appNav v-bind:authtype="authActive" v-bind:navtype="navtype"/>
     <Row class="body-pad" type="flex" align="middle" justify="center">
+      <Col :xs="24" :sm="16" :md="8">
+        <transition mode="out-in">
+          <Form label-position="top" v-if="showUp && passcontinue === false">
+            <h1>Let's get started</h1>
+            <br>
+            <h3>
+              <span style="color:#000;">Welcome!, Enter your email to continue</span>
+              <br>
+              <em>Your description here Similar to that of the appraiser portal assignment..</em>
+            </h3>
+            <br>
+            <FormItem label="Email" prop="email" style="margin-top:10px;">
+              <Input size="large" v-model="signupValidate.email" placeholder="Enter your email"></Input>
+            </FormItem>
+            <FormItem>
+              <Button type="primary" size="large" @click="phoneValidate()" long>Create Account</Button>
+            </FormItem>
+            <hr class="hr-text" data-content="OR">
+            <social></social>
+          </Form>
+        </transition>
+        <transition mode="out-in">
+          <Form
+            ref="signupValidate"
+            :model="signupValidate"
+            :rules="signupRuleValidate"
+            label-position="top"
+            v-if="showUp && passcontinue"
+          >
+            <h1>Continue to complete</h1>
+            <br>
+            <h3>
+              <span
+                style="color:#000;"
+              >Please enter your full-name and password to complete registration</span>
+            </h3>
+            <br>
+            <FormItem label="Full name" prop="name" style="margin-top:10px;">
+              <Input v-model="signupValidate.name" placeholder="Enter your name"></Input>
+            </FormItem>
+            <FormItem label="Password" prop="password">
+              <Input
+                v-model="signupValidate.password"
+                type="password"
+                placeholder="Enter your password"
+              ></Input>
+            </FormItem>
+            <FormItem label="Agree to Terms and conditions" prop="tc">
+              <CheckboxGroup v-model="signupValidate.tc">
+                <Checkbox label="Terms and conditions"></Checkbox>
+              </CheckboxGroup>
+            </FormItem>
+            <FormItem>
+              <Button type="primary" size="large" @click="upSubmit('signupValidate')" long>Complete</Button>
+            </FormItem>
+          </Form>
+        </transition>
+        <transition mode="out-in">
+          <Form
+            ref="logValidate"
+            :model="logValidate"
+            :rules="ruleValidate"
+            label-position="top"
+            v-if="!showUp"
+          >
+            <h1>Sign In</h1>
+            <h3>
+              <span style="color:#000;">Please enter your email &amp; password to log in</span>
+            </h3>
+            <br>
+            <FormItem label="Email" prop="email" style="margin-top:10px;">
+              <Input size="large" v-model="logValidate.email" placeholder="Enter your email"></Input>
+            </FormItem>
+            <FormItem label="Password" prop="password">
+              <Input
+                v-model="logValidate.password"
+                type="password"
+                placeholder="Enter your password"
+              ></Input>
+            </FormItem>
+            <FormItem>
+              <Button type="primary" size="large" @click="logSubmit('logValidate')" long>Log In</Button>
+            </FormItem>
+            <hr class="hr-text" data-content="OR">
+            <social></social>
+          </Form>
+        </transition>
+      </Col>
       <svg
         class="coconut-left"
         id="b1d80de4-06cb-4b2d-9c4c-b14d42818646"
@@ -588,94 +676,6 @@
           opacity="0.1"
         ></path>
       </svg>
-      <Col :xs="24" :sm="16" :md="8">
-        <transition mode="out-in">
-          <Form label-position="top" v-if="showUp && passcontinue === false">
-            <h1>Let's get started</h1>
-            <br>
-            <h3>
-              <span style="color:#000;">Welcome!, Enter your email to continue</span>
-              <br>
-              <em>Your description here Similar to that of the appraiser portal assignment..</em>
-            </h3>
-            <br>
-            <FormItem label="Email" prop="email" style="margin-top:10px;">
-              <Input size="large" v-model="signupValidate.email" placeholder="Enter your email"></Input>
-            </FormItem>
-            <FormItem>
-              <Button type="primary" size="large" @click="phoneValidate()" long>Create Account</Button>
-            </FormItem>
-            <hr class="hr-text" data-content="OR">
-            <social></social>
-          </Form>
-        </transition>
-        <transition mode="out-in">
-          <Form
-            ref="signupValidate"
-            :model="signupValidate"
-            :rules="signupRuleValidate"
-            label-position="top"
-            v-if="showUp && passcontinue"
-          >
-            <h1>Continue to complete</h1>
-            <br>
-            <h3>
-              <span
-                style="color:#000;"
-              >Please enter your full-name and password to complete registration</span>
-            </h3>
-            <br>
-            <FormItem label="Full name" prop="name" style="margin-top:10px;">
-              <Input v-model="signupValidate.name" placeholder="Enter your name"></Input>
-            </FormItem>
-            <FormItem label="Password" prop="password">
-              <Input
-                v-model="signupValidate.password"
-                type="password"
-                placeholder="Enter your password"
-              ></Input>
-            </FormItem>
-            <FormItem label="Agree to Terms and conditions" prop="tc">
-              <CheckboxGroup v-model="signupValidate.tc">
-                <Checkbox label="Terms and conditions"></Checkbox>
-              </CheckboxGroup>
-            </FormItem>
-            <FormItem>
-              <Button type="primary" size="large" @click="upSubmit('signupValidate')" long>Complete</Button>
-            </FormItem>
-          </Form>
-        </transition>
-        <transition mode="out-in">
-          <Form
-            ref="logValidate"
-            :model="logValidate"
-            :rules="ruleValidate"
-            label-position="top"
-            v-if="!showUp"
-          >
-            <h1>Sign In</h1>
-            <h3>
-              <span style="color:#000;">Please enter your email &amp; password to log in</span>
-            </h3>
-            <br>
-            <FormItem label="Email" prop="email" style="margin-top:10px;">
-              <Input size="large" v-model="logValidate.email" placeholder="Enter your email"></Input>
-            </FormItem>
-            <FormItem label="Password" prop="password">
-              <Input
-                v-model="logValidate.password"
-                type="password"
-                placeholder="Enter your password"
-              ></Input>
-            </FormItem>
-            <FormItem>
-              <Button type="primary" size="large" @click="logSubmit('logValidate')" long>Log In</Button>
-            </FormItem>
-            <hr class="hr-text" data-content="OR">
-            <social></social>
-          </Form>
-        </transition>
-      </Col>
     </Row>
   </div>
 </template>
