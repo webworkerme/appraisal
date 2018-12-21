@@ -12,7 +12,7 @@ const routers = [
  },
  {
   path: '/dashboard',
-  component: (resolve) => require(['./views/auth/index.vue'], resolve)
+  component: (resolve) => require(['./views/dashboard/index.vue'], resolve)
  }
 ];
 export default routers;

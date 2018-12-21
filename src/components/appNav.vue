@@ -9,30 +9,6 @@
           <img src="../images/logo-grey.png" class="app-nav-logo">
         </div>
       </a>
-      <!-- <input type="checkbox" id="drawer-toggle" name="drawer-toggle" class="menu-nv-hd" />
-    <label for="drawer-toggle" id="drawer-toggle-label" class="menu-nv-hd"></label>
-   <nav id="drawer">
-      <ul style="margin-top:150px;">
-        <li v-if="authtype !== true"><a href="/authenticate?signUp=false" class="a-h">Sign In</a></li>
-         <li v-if="authtype !== true"><a href="/authenticate?signUp=true" class="a-h">Sign Up</a></li>
-         <li><a @click="hwta = true" class="a-h">How it works</a></li>
-
-         <li v-if="navtype !== 'Create'"><a href="/sign-up-to-work" class="a-h">Sign up to work</a></li>
-         <li v-else><a class="a-h" href="/become/sign-up-to-work">Create a work account</a></li>
-         <li><a @click="help = true" class="a-h">Help</a></li>
-         <li style="bottom:30px;" v-if="authtype === true"><a>
-            <span v-if="curUser.image === 'default'">
-                            <img style="width:15px; height:15px; border-radius:100%; float:right;" src="../images/default.png" />
-                            <span>{{curUser.name}}</span>
-                        </span>
-                        <span v-else>
-                            <img style="width:15px; height:15px; border-radius:100%; float:right;" :src="curUser.image" />
-                            <span>{{curUser.name}}</span>
-                        </span>
-         </a></li>
-         <li v-if="authtype === true" style="bottom:10px;"><a @click="logout()" class="a-h">Log Out</a></li>
-      </ul>
-      </nav>-->
       <div class="menu-nav" v-if="navtype === 'Home' || navtype === 'Create'">
         <span v-if="authtype === true" style="float:right">
           <Dropdown
@@ -41,40 +17,24 @@
           >
             <a class="a-h">
               <span v-if="curUser.image === 'default'">
-                <Icon style="float:right; margin-top:20px;" type="arrow-down-b"></Icon>
-                <img
-                  style="width:25px; height:25px; border-radius:100%; margin-top:3px; float:right;"
-                  src="../images/default.png"
-                >
-                <span style="margin-right:10px; color:#424040; float:right; margin-top:7px;">
-                  <b>{{curUser.name}}</b>
-                </span>
+                <Icon type="ios-arrow-down" class="authIcon"/>
+                <img class="authImage" src="../images/default.png">
+                <div class="authName">{{curUser.name}}</div>
               </span>
               <span v-else>
-                <Icon style="float:right; margin-top:20px;" type="arrow-down-b"></Icon>
-                <img
-                  style="width:30px; height:30px; border-radius:100%; float:right;"
-                  :src="curUser.image"
-                >
-                <span style="margin-right:10px; color:#424040; float:right; margin-top:7px;">
-                  <b>{{curUser.name}}</b>
-                </span>
+                <Icon type="arrow-down-b" class="authIcon"></Icon>
+                <img class="authImage" :src="curUser.image">
+                <div class="authName">{{curUser.name}}</div>
               </span>
             </a>
             <DropdownMenu slot="list">
-              <!-- <router-link to="/profile" class="a-h">
-                            <DropdownItem>Profile</DropdownItem>
-                        </router-link>
-                        <router-link to="/hires" class="a-h">
-                            <DropdownItem>Hires</DropdownItem>
-              </router-link>-->
-              <router-link to="/bookings" class="a-h">
-                <DropdownItem>Bookings</DropdownItem>
+              <router-link to="/dashboard" class="a-h">
+                <DropdownItem>Dashboard</DropdownItem>
               </router-link>
-              <router-link to="/support-tickets" class="a-h">
-                <DropdownItem>Support tickets</DropdownItem>
+              <router-link to="#" class="a-h">
+                <DropdownItem>Bids</DropdownItem>
               </router-link>
-              <router-link to="/settings" class="a-h">
+              <router-link to="#" class="a-h">
                 <DropdownItem>Account Settings</DropdownItem>
               </router-link>
               <a class="a-h" @click="logout()">
@@ -161,16 +121,6 @@ export default {
       this.$session.destroy();
       this.$router.push("/");
       location.reload();
-    },
-    closed() {
-      this.help = false;
-    },
-    closedHwt() {
-      this.hwta = false;
-      this.$emit("hwtClose", false);
-    },
-    done() {
-      this.$emit("ticketCreated");
     }
   }
 };
@@ -210,6 +160,25 @@ export default {
   .menu-nv-hd {
     display: none !important;
   }
+}
+.authName {
+  color: #424040;
+  font-size: 14px;
+  float: right;
+  margin-top: 2px !important;
+  margin-right: 10px !important;
+}
+.authImage {
+  width: 30px;
+  height: 30px;
+  margin-top: -3px !important;
+  border-radius: 100%;
+  float: right;
+}
+.authIcon {
+  float: right;
+  margin-left: 5px !important;
+  margin-top: 12px !important;
 }
 </style>
 <style scoped>
