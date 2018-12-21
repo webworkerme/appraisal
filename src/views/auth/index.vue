@@ -605,6 +605,8 @@
             <FormItem>
               <Button type="primary" size="large" @click="phoneValidate()" long>Create Account</Button>
             </FormItem>
+            <hr class="hr-text" data-content="OR">
+            <social></social>
           </Form>
         </transition>
         <transition mode="out-in">
@@ -681,10 +683,14 @@ import Vue from "vue";
 import VueSession from "vue-session";
 import VueResource from "vue-resource";
 import config from "../../config";
+import social from "../../components/social";
 Vue.use(VueSession);
 Vue.use(VueResource);
 export default {
   name: "Authentication",
+  components: {
+    social
+  },
   data() {
     const EmailPhone = (rule, value, callback) => {
       var emailregex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

@@ -22,3 +22,59 @@ h4{
  float: left;
  margin-right: 50px;
 }
+
+.hr-text {
+ line-height: 1em;
+ position: relative;
+ outline: 0;
+ border: 0;
+ color: black;
+ text-align: center;
+ height: 1.5em;
+ opacity: .5;
+}
+.hr-text:before {
+   content: '';
+   background: linear-gradient(to right, transparent, #818078, transparent);
+   position: absolute;
+   left: 0;
+   top: 50%;
+   width: 100%;
+   height: 1px;
+ }
+ .hr-text:after {
+   content: attr(data-content);
+   position: relative;
+   display: inline-block;
+   color: black;
+
+   padding: 0 .5em;
+   line-height: 1.5em;
+   color: #818078;
+   background-color: #fcfcfa;
+ }
+.fb-btn{
+ background-color: #3b579d !important;
+ border-color: #3b579d !important;
+ padding-left:0 !important;
+}
+.fb-btn:hover{opacity:0.9;}
+.gg-btn{
+ background-color: #fff !important;
+ border-color: #d3d4d5 !important;
+ color: #676d73 !important;
+ padding-left:0 !important;
+}
+.gg-btn:hover{opacity:0.9;}
+.fb-btn .wrr, .gg-btn .wrr{
+ margin: 0 auto; width:180px;
+ }
+.fb-btn svg, .gg-btn svg{
+ float:left;
+width:25px;
+height:auto;
+margin-right:10px;
+}
+.fb-btn .text, .gg-btn .text{
+ float:left; width:50px;
+ }
