@@ -9,11 +9,6 @@
           <img src="../images/logo.png" class="app-nav-logo">
         </div>
       </a>
-      <!-- <a href="/explore" class="nv-lk" style="float:left; margin-left:31px; padding-right:10px; margin-top:7px; border-right:solid 1px #ddd;">Explore</a> -->
-      <div class="m-search">
-        <sturtaSearch class="sturta-global-outpost" searchType="global"></sturtaSearch>
-      </div>
-
       <!-- <input type="checkbox" id="drawer-toggle" name="drawer-toggle" class="menu-nv-hd" />
     <label for="drawer-toggle" id="drawer-toggle-label" class="menu-nv-hd"></label>
    <nav id="drawer">

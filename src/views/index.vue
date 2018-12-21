@@ -16,6 +16,9 @@
               <li>
                 <a href="#">Header Option 2</a>
               </li>
+              <li>
+                <a href="/authenticate">Log In</a>
+              </li>
             </ul>
           </nav>
           <div class="navbar__menu-mob">
