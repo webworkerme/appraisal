@@ -94,6 +94,7 @@
 <script>
 import Vue from "vue";
 import VueSession from "vue-session";
+import VueResource from "vue-resource";
 import config from "../../config";
 Vue.use(VueSession);
 Vue.use(VueResource);
@@ -221,6 +222,20 @@ export default {
         this.$Message.destroy();
         this.passcontinue = true;
       }
+    },
+    addUser(user) {
+      let url = config.createAuth;
+      return Vue.http
+        .post(url, user)
+        .then(response => Promise.resolve(response.data))
+        .catch(error => Promise.reject(error));
+    },
+    authUser(user) {
+      let url = config.signAuth;
+      return Vue.http
+        .post(url, user)
+        .then(response => Promise.resolve(response.data))
+        .catch(error => Promise.reject(error));
     },
     upSubmit(create) {
       this.$refs[create].validate(valid => {
@@ -519,20 +534,8 @@ export default {
         .then(response => Promise.resolve(response.data))
         .catch(error => Promise.reject(error));
     },
-    addUser(user) {
-      let url = config.createAuth;
-      return Vue.http
-        .post(url, user)
-        .then(response => Promise.resolve(response.data))
-        .catch(error => Promise.reject(error));
-    },
-    authUser(user) {
-      let url = config.signAuth;
-      return Vue.http
-        .post(url, user)
-        .then(response => Promise.resolve(response.data))
-        .catch(error => Promise.reject(error));
-    },
+
+
     defLoad() {
       let d = new Date();
       this.curYear = d.getFullYear();
