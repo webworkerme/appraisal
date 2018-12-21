@@ -203,6 +203,21 @@ export default {
       }
     };
   },
+  beforeCreate: function() {
+    if (this.$session.has("usrid")) {
+      let user = this.$session.get("usrid");
+      this.$router.push("/");
+    }
+  },
+  created() {
+    this.$Message.config({
+      top: 80,
+      duration: 10
+    });
+    !this.$route.query.redir
+      ? (this.redirect = "/")
+      : (this.redirect = this.$route.query.redir);
+  },
   methods: {
     loadingSync(e) {
       const msg = this.$Message.loading({
