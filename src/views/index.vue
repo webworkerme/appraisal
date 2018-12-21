@@ -5,16 +5,13 @@
       <nav class="nav__mobile"></nav>
       <div class="container">
         <div class="navbar__inner">
-          <a href="index.html" class="navbar__logo">
+          <a href="/" class="navbar__logo">
             <img src="/src/images/logo.png" class="app-nav-logo">
           </a>
           <nav class="navbar__menu">
             <ul>
               <li>
                 <a href="#">Header Option 1</a>
-              </li>
-              <li>
-                <a href="#">Header Option 2</a>
               </li>
               <li>
                 <a href="/authenticate">Log In / Sign Up</a>

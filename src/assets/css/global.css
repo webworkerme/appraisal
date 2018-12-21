@@ -10,6 +10,9 @@ h4{
  border: solid 1px #dddddd !important;
  font-size: 16px !important;
 }
+.ivu-form-item{
+ margin-bottom:10px !important;
+}
 .ivu-form-item-label{
  font-size: 16px !important;
 }
@@ -89,3 +92,6 @@ margin-right:10px;
 .fb-btn .text, .gg-btn .text{
  float:left; width:50px;
  }
+.ivu-form-item-error-tip{
+ margin-top: -20px;
+}

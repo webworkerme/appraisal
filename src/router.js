@@ -9,6 +9,10 @@ const routers = [
  {
   path: '/authenticate',
   component: (resolve) => require(['./views/auth/index.vue'], resolve)
+ },
+ {
+  path: '/dashboard',
+  component: (resolve) => require(['./views/auth/index.vue'], resolve)
  }
 ];
 export default routers;
