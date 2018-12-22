@@ -4,7 +4,7 @@ function getApiUrl() {
  if (hn === 'localhost') {
   return 'http://localhost:8989/api/' + vs
  } else {
-  return 'https://api.appraisal.com/api/' + vs
+  return 'http://api.appraisal.webworkerme.com/api/' + vs
  }
 }
 const API_URL = getApiUrl()

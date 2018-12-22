@@ -82,7 +82,7 @@ Vue.use(VueResource);
 Vue.use(axios);
 Vue.use(VueSession);
 export default {
-  props: ["navtype", "authtype", "profs", "hwt"],
+  props: ["navtype", "authtype", "profs", "hwt", "dataAsync"],
   data() {
     var now = new Date();
     var newYear = new Date(now.getFullYear() + 1, 0, 26);
@@ -104,6 +104,9 @@ export default {
       val !== "" && val !== false && val && val !== oldval
         ? (this.curUser = val)
         : this.curUser;
+    },
+    dataAsync: function(val) {
+      this.curUser = val;
     },
     hwt: function(val) {
       this.hwta = val;

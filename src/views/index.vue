@@ -259,9 +259,18 @@
 }
 </style>
 <script>
+import Vue from "vue";
+import VueSession from "vue-session";
+Vue.use(VueSession);
 export default {
   created() {
     this.addScripts("/src/assets/js/app.min.js");
+  },
+  beforeCreate: function() {
+    if (this.$session.has("usrid")) {
+      let user = this.$session.get("usrid");
+      this.$router.push("/dashboard");
+    }
   },
   methods: {
     addScripts(e) {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Hero(extended) navbar -->
-    <appNav v-bind:authtype="authActive" v-bind:navtype="navtype"/>
+    <appNav v-bind:authtype="authActive" v-bind:navtype="navtype" :dataAsync="curUser"/>
     <!-- Page content -->
     <div class="app">
       <Row type="flex" justify="center">
@@ -145,7 +145,11 @@
 }
 </style>
 <script>
+import Vue from "vue";
+import VueSession from "vue-session";
 import appNav from "../../components/appNav";
+
+Vue.use(VueSession);
 export default {
   components: {
     appNav
@@ -154,6 +158,7 @@ export default {
     return {
       navtype: "Home",
       authActive: true,
+      curUser: "",
       columns8: [
         {
           title: "Borrower Name",
@@ -419,7 +424,12 @@ export default {
     };
   },
   created() {
-    this.addScripts("/src/assets/js/app.min.js");
+   var self = this;
+    if (self.$session.has("usrid")) {
+      self.curUser = self.$session.get("usrid");
+      self.authtype = true;
+    }
+    // this.addScripts("/src/assets/js/app.min.js");
   },
   methods: {
     addScripts(e) {

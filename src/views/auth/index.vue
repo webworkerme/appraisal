@@ -869,6 +869,7 @@ export default {
               this.$Message.destroy();
               this.loadingSync("Logging in");
               if (!response.error) {
+                this.$session.start();
                 this.$session.set("usrid", response);
                 this.$router.push(this.redirect);
                 this.$Message.destroy();
@@ -902,6 +903,7 @@ export default {
               this.$Message.destroy();
               this.loadingSync("Logging in");
               if (!response.error) {
+                this.$session.start();
                 this.$session.set("usrid", response);
                 this.$router.push(this.redirect);
                 this.$Message.destroy();
