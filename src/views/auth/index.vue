@@ -869,8 +869,9 @@ export default {
               this.$Message.destroy();
               this.loadingSync("Logging in");
               if (!response.error) {
+                this.signupValidate.password = "";
                 this.$session.start();
-                this.$session.set("usrid", response);
+                this.$session.set("usrid", this.signupValidate);
                 this.$router.push(this.redirect);
                 this.$Message.destroy();
                 this.$Message.success("logged in");

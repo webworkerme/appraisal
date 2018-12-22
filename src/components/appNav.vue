@@ -19,12 +19,12 @@
               <span v-if="curUser.image === 'default'">
                 <Icon type="ios-arrow-down" class="authIcon"/>
                 <img class="authImage" src="../images/default.png">
-                <div class="authName">{{curUser.name}}</div>
+                <div class="authName">{{dataAsync.name}}</div>
               </span>
               <span v-else>
                 <Icon type="arrow-down-b" class="authIcon"></Icon>
                 <img class="authImage" :src="curUser.image">
-                <div class="authName">{{curUser.name}}</div>
+                <div class="authName">{{dataAsync.name}}</div>
               </span>
             </a>
             <DropdownMenu slot="list">

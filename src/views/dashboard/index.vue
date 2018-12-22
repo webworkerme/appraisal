@@ -425,10 +425,12 @@ export default {
   },
   created() {
    var self = this;
+   console.log(self.curUser)
     if (self.$session.has("usrid")) {
       self.curUser = self.$session.get("usrid");
       self.authtype = true;
     }
+    console.log(self.curUser)
     // this.addScripts("/src/assets/js/app.min.js");
   },
   methods: {
